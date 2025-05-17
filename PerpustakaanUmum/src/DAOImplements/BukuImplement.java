@@ -10,4 +10,5 @@ public interface BukuImplement {
     public void editBuku(BukuModel dataBuku);
     public void hapusBuku(int idBuku);
     public List<BukuModel> showAllBuku();
+    public List<BukuModel> cariBuku(String keyword, String kategori);
 }

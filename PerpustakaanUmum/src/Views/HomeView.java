@@ -37,7 +37,7 @@ public class HomeView extends javax.swing.JFrame {
         tabelDataBuku = new javax.swing.JTable();
         txtCariBuku = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        cbKriteriaCari = new javax.swing.JComboBox<>();
+        cbKategoriCari = new javax.swing.JComboBox<>();
         btnCari = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtStock = new javax.swing.JTextField();
@@ -103,17 +103,28 @@ public class HomeView extends javax.swing.JFrame {
         jLabel2.setText("Cari Buku :");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 70, 40));
 
-        cbKriteriaCari.setBackground(new java.awt.Color(255, 255, 255));
-        cbKriteriaCari.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        cbKriteriaCari.setForeground(new java.awt.Color(0, 0, 0));
-        cbKriteriaCari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Judul", "Genre", "Penulis", "Penerbit" }));
-        cbKriteriaCari.setSelectedIndex(-1);
-        jPanel1.add(cbKriteriaCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, -1, -1));
+        cbKategoriCari.setBackground(new java.awt.Color(255, 255, 255));
+        cbKategoriCari.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        cbKategoriCari.setForeground(new java.awt.Color(0, 0, 0));
+        cbKategoriCari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Judul", "Genre", "Penulis", "Penerbit" }));
+        cbKategoriCari.setSelectedIndex(-1);
+        cbKategoriCari.setToolTipText("");
+        cbKategoriCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbKategoriCariActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbKategoriCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, -1, -1));
 
         btnCari.setBackground(new java.awt.Color(51, 51, 255));
         btnCari.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         btnCari.setForeground(new java.awt.Color(0, 0, 0));
         btnCari.setText("Cari");
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
@@ -228,6 +239,11 @@ public class HomeView extends javax.swing.JFrame {
         btnShowAll.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         btnShowAll.setForeground(new java.awt.Color(0, 0, 0));
         btnShowAll.setText("Show All");
+        btnShowAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowAllActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnShowAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -282,6 +298,22 @@ public class HomeView extends javax.swing.JFrame {
         txtStock.setText(tabelDataBuku.getValueAt(row, 6).toString());
     }//GEN-LAST:event_tabelDataBukuMouseClicked
 
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        String keyword = txtCariBuku.getText();
+        Object selectedKategori = cbKategoriCari.getSelectedItem();
+       
+        String kategori = (selectedKategori == null) ? "judul" : selectedKategori.toString();
+        controllerBuku.searchDataTabel(keyword, kategori);
+    }//GEN-LAST:event_btnCariActionPerformed
+
+    private void cbKategoriCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKategoriCariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbKategoriCariActionPerformed
+
+    private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
+        controllerBuku.loadDataTabel();
+    }//GEN-LAST:event_btnShowAllActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -323,7 +355,7 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnShowAll;
     private javax.swing.JButton btnTambah;
-    private javax.swing.JComboBox<String> cbKriteriaCari;
+    private javax.swing.JComboBox<String> cbKategoriCari;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -386,12 +418,12 @@ public class HomeView extends javax.swing.JFrame {
         this.btnTambah = btnTambah;
     }
 
-    public JComboBox<String> getCbKriteriaCari() {
-        return cbKriteriaCari;
+    public JComboBox<String> getCbKategoriCari() {
+        return cbKategoriCari;
     }
 
-    public void setCbKriteriaCari(JComboBox<String> cbKriteriaCari) {
-        this.cbKriteriaCari = cbKriteriaCari;
+    public void setCbKategoriCari(JComboBox<String> cbKategoriCari) {
+        this.cbKategoriCari = cbKategoriCari;
     }
 
     public JTable getTabelDataBuku() {

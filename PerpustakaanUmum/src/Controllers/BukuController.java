@@ -4,6 +4,7 @@ import Koneksi.Connector;
 import Models.*;
 import DAOImplements.BukuImplement;
 import DAO.BukuDAO;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 /**
@@ -60,4 +61,10 @@ public class BukuController {
         implementBuku.hapusBuku(idBuku);
     }
     
+    public void searchDataTabel(String keyword, String kategori){
+        List<BukuModel> dataBukuCari = new ArrayList<BukuModel>();
+        dataBukuCari = implementBuku.cariBuku(keyword, kategori);
+        TabelBukuModel tabelDataBukuCari = new TabelBukuModel(dataBukuCari);
+        homeFrame.getTabelDataBuku().setModel(tabelDataBukuCari);
+    }
 }
