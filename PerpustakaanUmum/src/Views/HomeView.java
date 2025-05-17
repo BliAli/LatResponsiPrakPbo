@@ -1,20 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Views;
+
+import Controllers.BukuController;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
  * @author aliad
  */
 public class HomeView extends javax.swing.JFrame {
+    BukuController controllerBuku;
 
     /**
      * Creates new form HomeView
      */
     public HomeView() {
         initComponents();
+        controllerBuku = new BukuController(this);
+        controllerBuku.loadDataTabel();
     }
 
     /**
@@ -29,32 +34,31 @@ public class HomeView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        tabelDataBuku = new javax.swing.JTable();
+        txtCariBuku = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        cbKriteriaCari = new javax.swing.JComboBox<>();
+        btnCari = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtStock = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtID = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtJudul = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtGenre = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtPenulis = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtPenerbit = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        txtLokasi = new javax.swing.JTextField();
+        btnTambah = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
+        btnShowAll = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -65,9 +69,9 @@ public class HomeView extends javax.swing.JFrame {
         jLabel1.setText("PERPUSTAKAAN UMUM KOS KUNING");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1000, -1));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelDataBuku.setBackground(new java.awt.Color(255, 255, 255));
+        tabelDataBuku.setForeground(new java.awt.Color(0, 0, 0));
+        tabelDataBuku.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -75,141 +79,146 @@ public class HomeView extends javax.swing.JFrame {
                 "ID Buku", "Judul Buku", "Genre", "Penulis", "Penerbit", "Lokasi", "Stock"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelDataBuku);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 600, 400));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtCariBuku.setBackground(new java.awt.Color(255, 255, 255));
+        txtCariBuku.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        txtCariBuku.setForeground(new java.awt.Color(0, 0, 0));
+        txtCariBuku.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtCariBukuActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 210, -1));
+        jPanel1.add(txtCariBuku, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 210, -1));
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Cari Buku :");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 70, 40));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Judul", "Genre", "Penulis", "Penerbit" }));
-        jComboBox1.setSelectedIndex(-1);
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, -1, -1));
+        cbKriteriaCari.setBackground(new java.awt.Color(255, 255, 255));
+        cbKriteriaCari.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        cbKriteriaCari.setForeground(new java.awt.Color(0, 0, 0));
+        cbKriteriaCari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Judul", "Genre", "Penulis", "Penerbit" }));
+        cbKriteriaCari.setSelectedIndex(-1);
+        jPanel1.add(cbKriteriaCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 255));
-        jButton1.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Cari");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, -1, -1));
+        btnCari.setBackground(new java.awt.Color(51, 51, 255));
+        btnCari.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        btnCari.setForeground(new java.awt.Color(0, 0, 0));
+        btnCari.setText("Cari");
+        jPanel1.add(btnCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Stock");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 60, 30));
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 470, 200, 30));
+        txtStock.setBackground(new java.awt.Color(255, 255, 255));
+        txtStock.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        txtStock.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 470, 200, 30));
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("ID Buku");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, 30));
 
-        jTextField3.setEditable(false);
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 200, 30));
+        txtID.setEditable(false);
+        txtID.setBackground(new java.awt.Color(153, 153, 153));
+        txtID.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 200, 30));
 
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Judul");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 40, 30));
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 200, 30));
+        txtJudul.setBackground(new java.awt.Color(255, 255, 255));
+        txtJudul.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        txtJudul.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtJudul, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 200, 30));
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Genre");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 40, 30));
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 200, 30));
+        txtGenre.setBackground(new java.awt.Color(255, 255, 255));
+        txtGenre.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        txtGenre.setForeground(new java.awt.Color(0, 0, 0));
+        txtGenre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGenreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtGenre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 200, 30));
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Penulis");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 50, 30));
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 200, 30));
+        txtPenulis.setBackground(new java.awt.Color(255, 255, 255));
+        txtPenulis.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        txtPenulis.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtPenulis, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 200, 30));
 
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Penerbit");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 60, 30));
 
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 200, 30));
+        txtPenerbit.setBackground(new java.awt.Color(255, 255, 255));
+        txtPenerbit.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        txtPenerbit.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtPenerbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 200, 30));
 
         jLabel9.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Lokasi");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 60, 30));
 
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField8.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 200, 30));
+        txtLokasi.setBackground(new java.awt.Color(255, 255, 255));
+        txtLokasi.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        txtLokasi.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtLokasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 200, 30));
 
-        jButton2.setBackground(new java.awt.Color(51, 255, 0));
-        jButton2.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Tambah");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
+        btnTambah.setBackground(new java.awt.Color(51, 255, 0));
+        btnTambah.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        btnTambah.setForeground(new java.awt.Color(0, 0, 0));
+        btnTambah.setText("Tambah");
+        jPanel1.add(btnTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
 
-        jButton3.setBackground(new java.awt.Color(0, 51, 255));
-        jButton3.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("Edit");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnEdit.setBackground(new java.awt.Color(0, 51, 255));
+        btnEdit.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(0, 0, 0));
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnEditActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, -1, -1));
+        jPanel1.add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, -1, -1));
 
-        jButton4.setBackground(new java.awt.Color(255, 0, 0));
-        jButton4.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("Hapus");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnHapus.setBackground(new java.awt.Color(255, 0, 0));
+        btnHapus.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        btnHapus.setForeground(new java.awt.Color(0, 0, 0));
+        btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnHapusActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, -1, -1));
+        jPanel1.add(btnHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, -1, -1));
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jButton5.setText("Show All");
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, -1, -1));
+        btnShowAll.setBackground(new java.awt.Color(255, 255, 255));
+        btnShowAll.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        btnShowAll.setForeground(new java.awt.Color(0, 0, 0));
+        btnShowAll.setText("Show All");
+        jPanel1.add(btnShowAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -226,17 +235,21 @@ public class HomeView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtCariBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariBukuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtCariBukuActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnEditActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void txtGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGenreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,12 +287,12 @@ public class HomeView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnCari;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnShowAll;
+    private javax.swing.JButton btnTambah;
+    private javax.swing.JComboBox<String> cbKriteriaCari;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -291,14 +304,136 @@ public class HomeView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTable tabelDataBuku;
+    private javax.swing.JTextField txtCariBuku;
+    private javax.swing.JTextField txtGenre;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtJudul;
+    private javax.swing.JTextField txtLokasi;
+    private javax.swing.JTextField txtPenerbit;
+    private javax.swing.JTextField txtPenulis;
+    private javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnCari() {
+        return btnCari;
+    }
+
+    public void setBtnCari(JButton btnCari) {
+        this.btnCari = btnCari;
+    }
+
+    public JButton getBtnEdit() {
+        return btnEdit;
+    }
+
+    public void setBtnEdit(JButton btnEdit) {
+        this.btnEdit = btnEdit;
+    }
+
+    public JButton getBtnHapus() {
+        return btnHapus;
+    }
+
+    public void setBtnHapus(JButton btnHapus) {
+        this.btnHapus = btnHapus;
+    }
+
+    public JButton getBtnShowAll() {
+        return btnShowAll;
+    }
+
+    public void setBtnShowAll(JButton btnShowAll) {
+        this.btnShowAll = btnShowAll;
+    }
+
+    public JButton getBtnTambah() {
+        return btnTambah;
+    }
+
+    public void setBtnTambah(JButton btnTambah) {
+        this.btnTambah = btnTambah;
+    }
+
+    public JComboBox<String> getCbKriteriaCari() {
+        return cbKriteriaCari;
+    }
+
+    public void setCbKriteriaCari(JComboBox<String> cbKriteriaCari) {
+        this.cbKriteriaCari = cbKriteriaCari;
+    }
+
+    public JTable getTabelDataBuku() {
+        return tabelDataBuku;
+    }
+
+    public void setTabelDataBuku(JTable tabelDataBuku) {
+        this.tabelDataBuku = tabelDataBuku;
+    }
+
+    public JTextField getTxtCariBuku() {
+        return txtCariBuku;
+    }
+
+    public void setTxtCariBuku(JTextField txtCariBuku) {
+        this.txtCariBuku = txtCariBuku;
+    }
+
+    public JTextField getTxtGenre() {
+        return txtGenre;
+    }
+
+    public void setTxtGenre(JTextField txtGenre) {
+        this.txtGenre = txtGenre;
+    }
+
+    public JTextField getTxtID() {
+        return txtID;
+    }
+
+    public void setTxtID(JTextField txtID) {
+        this.txtID = txtID;
+    }
+
+    public JTextField getTxtJudul() {
+        return txtJudul;
+    }
+
+    public void setTxtJudul(JTextField txtJudul) {
+        this.txtJudul = txtJudul;
+    }
+
+    public JTextField getTxtLokasi() {
+        return txtLokasi;
+    }
+
+    public void setTxtLokasi(JTextField txtLokasi) {
+        this.txtLokasi = txtLokasi;
+    }
+
+    public JTextField getTxtPenerbit() {
+        return txtPenerbit;
+    }
+
+    public void setTxtPenerbit(JTextField txtPenerbit) {
+        this.txtPenerbit = txtPenerbit;
+    }
+
+    public JTextField getTxtPenulis() {
+        return txtPenulis;
+    }
+
+    public void setTxtPenulis(JTextField txtPenulis) {
+        this.txtPenulis = txtPenulis;
+    }
+
+    public JTextField getTxtStock() {
+        return txtStock;
+    }
+
+    public void setTxtStock(JTextField txtStock) {
+        this.txtStock = txtStock;
+    }
+    
+    
 }

@@ -6,7 +6,7 @@ import java.sql.SQLException;
  *
  * @author aliad
  */
-public class Conncector {
+public class Connector {
     static Connection conn;
     
     public static Connection connection(){
