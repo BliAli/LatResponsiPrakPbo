@@ -79,6 +79,11 @@ public class HomeView extends javax.swing.JFrame {
                 "ID Buku", "Judul Buku", "Genre", "Penulis", "Penerbit", "Lokasi", "Stock"
             }
         ));
+        tabelDataBuku.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelDataBukuMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelDataBuku);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 600, 400));
@@ -245,7 +250,9 @@ public class HomeView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCariBukuActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
+        controllerBuku.editDataTabel();
+        controllerBuku.loadDataTabel();
+        clearField();
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
@@ -261,6 +268,17 @@ public class HomeView extends javax.swing.JFrame {
         controllerBuku.loadDataTabel();
         clearField();
     }//GEN-LAST:event_btnTambahActionPerformed
+
+    private void tabelDataBukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDataBukuMouseClicked
+        int row = tabelDataBuku.getSelectedRow();
+        txtID.setText(tabelDataBuku.getValueAt(row, 0).toString());
+        txtJudul.setText(tabelDataBuku.getValueAt(row, 1).toString());
+        txtGenre.setText(tabelDataBuku.getValueAt(row, 2).toString());
+        txtPenulis.setText(tabelDataBuku.getValueAt(row, 3).toString());
+        txtPenerbit.setText(tabelDataBuku.getValueAt(row, 4).toString());
+        txtLokasi.setText(tabelDataBuku.getValueAt(row, 5).toString());
+        txtStock.setText(tabelDataBuku.getValueAt(row, 6).toString());
+    }//GEN-LAST:event_tabelDataBukuMouseClicked
 
     /**
      * @param args the command line arguments

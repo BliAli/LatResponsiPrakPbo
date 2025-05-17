@@ -15,7 +15,8 @@ public class BukuDAO implements BukuImplement{
     Connection connection;
     final String showQuery = "SELECT * FROM buku";
     final String insertQuery = "INSERT INTO buku (judul, genre, penulis, penerbit, lokasi, stock) VALUES (?, ?, ?, ?, ?, ?)";
-
+    final String editQuery = "UPDATE buku SET judul = ?, genre = ?, penulis = ?, penerbit = ?, lokasi = ?, stock = ? WHERE id = ? ";
+    
     public BukuDAO() {
         this.connection = Connector.connection();
     }
@@ -53,7 +54,29 @@ public class BukuDAO implements BukuImplement{
 
     @Override
     public void editBuku(BukuModel dataBuku) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        PreparedStatement prepStatement = null;
+        
+        try {
+            prepStatement = connection.prepareStatement(editQuery);
+            prepStatement.setString(1, dataBuku.getJudul());
+            prepStatement.setString(2, dataBuku.getGenre());
+            prepStatement.setString(3, dataBuku.getPenulis());
+            prepStatement.setString(4, dataBuku.getPenerbit());
+            prepStatement.setString(5, dataBuku.getLokasi());
+            prepStatement.setInt(6, dataBuku.getStock());
+            prepStatement.setInt(7, dataBuku.getId());
+            prepStatement.executeUpdate();
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        finally{
+            try {
+                prepStatement.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     @Override
