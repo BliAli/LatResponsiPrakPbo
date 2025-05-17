@@ -14,16 +14,41 @@ import java.util.logging.Level;
 public class BukuDAO implements BukuImplement{
     Connection connection;
     final String showQuery = "SELECT * FROM buku";
+    final String insertQuery = "INSERT INTO buku (judul, genre, penulis, penerbit, lokasi, stock) VALUES (?, ?, ?, ?, ?, ?)";
 
     public BukuDAO() {
         this.connection = Connector.connection();
     }
-
-    
     
     @Override
     public void tambahBuku(BukuModel dataBuku) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        PreparedStatement prepStatement = null;
+        
+        try {
+            prepStatement = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            prepStatement.setString(1, dataBuku.getJudul());
+            prepStatement.setString(2, dataBuku.getGenre());
+            prepStatement.setString(3, dataBuku.getPenulis());
+            prepStatement.setString(4, dataBuku.getPenerbit());
+            prepStatement.setString(5, dataBuku.getLokasi());
+            prepStatement.setInt(6, dataBuku.getStock());
+            prepStatement.executeUpdate();
+            
+            ResultSet result = prepStatement.getGeneratedKeys();
+            while(result.next()){
+                dataBuku.setId(result.getInt(1));
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        finally{
+            try {
+                prepStatement.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -39,6 +64,7 @@ public class BukuDAO implements BukuImplement{
     @Override
     public List<BukuModel> showAllBuku() {
         List<BukuModel> dataBuku = null;
+        
         try {
             dataBuku = new ArrayList<BukuModel>();
             Statement statement = connection.createStatement();

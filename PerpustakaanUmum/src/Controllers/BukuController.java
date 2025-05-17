@@ -27,4 +27,17 @@ public class BukuController {
         homeFrame.getTabelDataBuku().setModel(tabelDataBuku);
     }
     
+    public void insertDataTabel(){
+        BukuModel buku = new BukuModel();
+        
+        buku.setJudul(homeFrame.getTxtJudul().getText());
+        buku.setGenre(homeFrame.getTxtGenre().getText());
+        buku.setPenulis(homeFrame.getTxtPenulis().getText());
+        buku.setPenerbit(homeFrame.getTxtPenerbit().getText());
+        buku.setLokasi(homeFrame.getTxtLokasi().getText());
+        buku.setStock(Integer.parseInt(homeFrame.getTxtStock().getText()));
+        
+        implementBuku.tambahBuku(buku);
+    }
+    
 }

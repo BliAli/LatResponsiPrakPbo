@@ -190,6 +190,11 @@ public class HomeView extends javax.swing.JFrame {
         btnTambah.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         btnTambah.setForeground(new java.awt.Color(0, 0, 0));
         btnTambah.setText("Tambah");
+        btnTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
 
         btnEdit.setBackground(new java.awt.Color(0, 51, 255));
@@ -250,6 +255,12 @@ public class HomeView extends javax.swing.JFrame {
     private void txtGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGenreActionPerformed
+
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
+        controllerBuku.insertDataTabel();
+        controllerBuku.loadDataTabel();
+        clearField();
+    }//GEN-LAST:event_btnTambahActionPerformed
 
     /**
      * @param args the command line arguments
@@ -435,5 +446,13 @@ public class HomeView extends javax.swing.JFrame {
         this.txtStock = txtStock;
     }
     
-    
+    public void clearField(){
+        txtID.setText("");
+        txtJudul.setText("");
+        txtGenre.setText("");
+        txtPenulis.setText("");
+        txtPenerbit.setText("");
+        txtLokasi.setText("");
+        txtStock.setText("");
+    }
 }
