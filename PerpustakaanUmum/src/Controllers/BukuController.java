@@ -54,4 +54,10 @@ public class BukuController {
         implementBuku.editBuku(buku);
     }
     
+    public void deleteDataTabel(){
+        int idBuku = Integer.parseInt(homeFrame.getTxtID().getText());
+        
+        implementBuku.hapusBuku(idBuku);
+    }
+    
 }

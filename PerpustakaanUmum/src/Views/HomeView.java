@@ -256,7 +256,9 @@ public class HomeView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
-        // TODO add your handling code here:
+        controllerBuku.deleteDataTabel();
+        controllerBuku.loadDataTabel();
+        clearField();
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void txtGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenreActionPerformed
