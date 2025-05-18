@@ -57,6 +57,7 @@ public class HomeView extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
         btnShowAll = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,9 +68,10 @@ public class HomeView extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PERPUSTAKAAN UMUM KOS KUNING");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1000, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1080, -1));
 
         tabelDataBuku.setBackground(new java.awt.Color(255, 255, 255));
+        tabelDataBuku.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         tabelDataBuku.setForeground(new java.awt.Color(0, 0, 0));
         tabelDataBuku.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,22 +88,22 @@ public class HomeView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelDataBuku);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 600, 400));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 640, 400));
 
         txtCariBuku.setBackground(new java.awt.Color(255, 255, 255));
-        txtCariBuku.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        txtCariBuku.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         txtCariBuku.setForeground(new java.awt.Color(0, 0, 0));
         txtCariBuku.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCariBukuActionPerformed(evt);
             }
         });
-        jPanel1.add(txtCariBuku, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 210, -1));
+        jPanel1.add(txtCariBuku, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 210, -1));
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Cari Buku :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 70, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 70, 40));
 
         cbKategoriCari.setBackground(new java.awt.Color(255, 255, 255));
         cbKategoriCari.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
@@ -114,7 +116,7 @@ public class HomeView extends javax.swing.JFrame {
                 cbKategoriCariActionPerformed(evt);
             }
         });
-        jPanel1.add(cbKategoriCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, -1, -1));
+        jPanel1.add(cbKategoriCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, -1, -1));
 
         btnCari.setBackground(new java.awt.Color(51, 51, 255));
         btnCari.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
@@ -125,7 +127,7 @@ public class HomeView extends javax.swing.JFrame {
                 btnCariActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, -1, -1));
+        jPanel1.add(btnCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 100, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -244,7 +246,18 @@ public class HomeView extends javax.swing.JFrame {
                 btnShowAllActionPerformed(evt);
             }
         });
-        jPanel1.add(btnShowAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, -1, -1));
+        jPanel1.add(btnShowAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 100, -1, -1));
+
+        btnClear.setBackground(new java.awt.Color(255, 255, 255));
+        btnClear.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        btnClear.setForeground(new java.awt.Color(0, 0, 0));
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -314,6 +327,10 @@ public class HomeView extends javax.swing.JFrame {
         controllerBuku.loadDataTabel();
     }//GEN-LAST:event_btnShowAllActionPerformed
 
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        clearField();
+    }//GEN-LAST:event_btnClearActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -351,6 +368,7 @@ public class HomeView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCari;
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnShowAll;

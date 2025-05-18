@@ -139,7 +139,6 @@ public class BukuDAO implements BukuImplement {
 
             prepStatement.setString(1, kataCari);
 
-
             ResultSet result = prepStatement.executeQuery();
             while (result.next()) {
                 BukuModel bukuCari = new BukuModel();
